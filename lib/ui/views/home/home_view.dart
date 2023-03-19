@@ -60,7 +60,7 @@ class HomeView extends ViewModelBuilderWidget<HomeViewModel>{
                     //Gender
                     DropdownButtonFormField<String>(
                       // formControlName: HomeFormControls.gender,
-                      hint: const Text('Select Gender'),
+                      hint: const Text('Gender'),
                       items: viewModel.dropdownItems
               .map((item) => DropdownMenuItem<String>(
                     value: item,
