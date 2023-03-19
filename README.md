@@ -1,6 +1,6 @@
 <p align="center">
 
-<img src="documentation/logo.png" />
+<!-- <img src="documentation/logo.png" /> -->
 
 </p>
 <h1 align="center">Developer Guide</h1>
