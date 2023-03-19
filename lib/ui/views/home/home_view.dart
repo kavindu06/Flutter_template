@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_starter/ui/views/home/home_view_model.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:stacked/stacked.dart';
@@ -23,53 +24,58 @@ class HomeView extends ViewModelBuilderWidget<HomeViewModel>{
       body:  SingleChildScrollView(
         child: ReactiveForm(
             formGroup: viewModel.formGroup,
-            child: Row(
-              children: [
-                const SizedBox(
-                  height: 15,
-                ),
-                //Name
-                ReactiveTextField(
-                  formControlName: HomeFormControls.name,
-                  maxLines: 2,
-                  decoration: const InputDecoration(
-                    hintText: 'Name',
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                //Date of Birth
-                ReactiveTextField(
-                    formControlName: HomeFormControls.dateOfBirth,
-                    keyboardType: TextInputType.datetime,
-                    decoration: const InputDecoration(
-                        hintText: "Date Of Birth"),
-                    onTap: (value) {
-                      viewModel.selectDate(context);
-                    }),
-                const SizedBox(
-                  height: 20,
-                ),
-                //Gender
-                ReactiveDropdownField<String>(
-                  formControlName: HomeFormControls.gender,
-                  hint: const Text('Select Gender'),
-                  items: const [
-                    DropdownMenuItem(
-                      value: "male",
-                      child: Text('male'),
+            child: Center(
+              child: Container(
+                child: Column(
+                  children: [
+                     SizedBox(
+                      height: 15.h,
                     ),
-                    DropdownMenuItem(
-                      value: "female",
-                      child: Text('female'),
+                    //Name
+                    SizedBox(
+                      width: 300.w,
+                      child: ReactiveTextField(
+                        formControlName: HomeFormControls.name,
+                        maxLines: 2,
+                        decoration: const InputDecoration(
+                          hintText: 'Name',
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    //Date of Birth
+                    ReactiveTextField(
+                        formControlName: HomeFormControls.dateOfBirth,
+                        keyboardType: TextInputType.datetime,
+                        decoration: const InputDecoration(
+                            hintText: "Date Of Birth"),
+                        onTap: (value) {
+                          viewModel.selectDate(context);
+                        }),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    //Gender
+                    DropdownButtonFormField<String>(
+                      // formControlName: HomeFormControls.gender,
+                      hint: const Text('Select Gender'),
+                      items: viewModel.dropdownItems
+              .map((item) => DropdownMenuItem<String>(
+                    value: item,
+                    child: Text(item),
+                    
+                  ),
+                  )
+              .toList(),
+                      onChanged: (_) {
+                        // viewModel.changeCallType();
+                      },
                     ),
                   ],
-                  onChanged: (_) {
-                    // viewModel.changeCallType();
-                  },
                 ),
-              ],
+              ),
             )
         ),
       ),
