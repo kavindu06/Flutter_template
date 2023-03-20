@@ -12,7 +12,7 @@ class HomeViewModel extends BaseViewModel{
   int counter = 0;
   HomeViewModel();
 
-  List<String> dropdownItems = ['Option 1', 'Option 2', 'Option 3'];
+  List<String> dropdownItems = ['', 'Female'];
 
   void incrementCounter() {
     counter++;

@@ -5,6 +5,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 import 'package:stacked/stacked.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_starter/ui/views/home/home_controls.dart';
+import 'package:dropdown_search/dropdown_search.dart';
 
 
 class HomeView extends ViewModelBuilderWidget<HomeViewModel>{
@@ -32,16 +33,27 @@ class HomeView extends ViewModelBuilderWidget<HomeViewModel>{
                       height: 15.h,
                     ),
                     //Name
-                    SizedBox(
-                      width: 300.w,
-                      child: ReactiveTextField(
-                        formControlName: HomeFormControls.name,
-                        maxLines: 2,
-                        decoration: const InputDecoration(
-                          hintText: 'Name',
-                        ),
+                    ReactiveTextField(
+                      formControlName: HomeFormControls.name,
+                      maxLines: 2,
+                      decoration: const InputDecoration(
+                        hintText: 'Name_1',
                       ),
                     ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ReactiveTextField(
+                      formControlName: HomeFormControls.name,
+                      maxLines: 2,
+                      decoration: const InputDecoration(
+                        hintText: 'Name_2',
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    
                     const SizedBox(
                       height: 20,
                     ),
@@ -50,16 +62,20 @@ class HomeView extends ViewModelBuilderWidget<HomeViewModel>{
                         formControlName: HomeFormControls.dateOfBirth,
                         keyboardType: TextInputType.datetime,
                         decoration: const InputDecoration(
-                            hintText: "Date Of Birth"),
+                            hintText: "Date"),
                         onTap: (value) {
                           viewModel.selectDate(context);
                         }),
                     const SizedBox(
                       height: 20,
                     ),
+                      const SizedBox(
+                      height: 20,
+                    ),
                     //Gender
                     DropdownButtonFormField<String>(
                       // formControlName: HomeFormControls.gender,
+                     
                       hint: const Text('Gender'),
                       items: viewModel.dropdownItems
               .map((item) => DropdownMenuItem<String>(
